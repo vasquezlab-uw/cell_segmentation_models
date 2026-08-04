@@ -1,0 +1,37 @@
+name: cell_analysis
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.11
+  - numpy
+  - pandas
+  - matplotlib
+  - scikit-image
+  - tqdm
+  - jupyter
+  - ipykernel
+  - pip
+  - pip:
+      - tifffile
+      - cellpose
+
+# --- Notes for setup ---
+# 1. Create the environment:
+#      conda env create -f environment.yml
+#
+# 2. Activate it:
+#      conda activate cell_analysis
+#
+# 3. Register it as a Jupyter kernel (so it shows up in VS Code / Jupyter Lab):
+#      python -m ipykernel install --user --name cell_analysis --display-name "cell_analysis"
+#
+# 4. GPU note: this notebook calls models.CellposeModel(gpu=True, ...).
+#    The pip-installed `cellpose` package pulls in a CPU-only PyTorch by default.
+#    For GPU support, install the matching CUDA build of torch AFTER creating
+#    this environment, e.g. (adjust cuXXX to your driver's CUDA version):
+#      pip install torch --index-url https://download.pytorch.org/whl/cu121
+#    Check available versions/instructions at https://pytorch.org/get-started/locally/
+#
+# 5. Update the paths in the notebook's "Config" cell (raw_dir, clahe_dir,
+#    mask_dir, results_dir, model_path) before running.
