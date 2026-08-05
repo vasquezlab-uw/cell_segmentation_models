@@ -13,6 +13,8 @@ conda activate cell_analysis
 
 `pip install cellpose` installs a **CPU-only** version of PyTorch by default. The notebook calls `models.CellposeModel(gpu=True, ...)`, so you'll want GPU acceleration if it's available on your machine.
 
+note: default environment already includes MPS (Apple GPU) support via torch, no extra step needed.
+
 **On the lab cluster (Tillicum/Hyak, NVIDIA GPUs):**
 ```bash
 pip install torch --index-url https://download.pytorch.org/whl/cu121
