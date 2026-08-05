@@ -3,7 +3,7 @@ channels:
   - conda-forge
   - defaults
 dependencies:
-  - python=3.11
+  - python=3.10
   - numpy
   - pandas
   - matplotlib
@@ -14,9 +14,16 @@ dependencies:
   - pip
   - pip:
       - tifffile
-      - cellpose
+      - cellpose==4.1.1   # matches the version confirmed on the lab cluster (tillicum, cellpose env)
 
 # --- Notes for setup ---
+#
+# CELLPOSE-SAM NOTE: cellpose 4.1.1 is a Cellpose-SAM release.
+# Cellpose-SAM disregards the `channels` parameter that was used in v3 and
+# earlier — the `channels=[0, 0]` argument in model.eval() in these notebooks
+# is a no-op under this version (confirmed by the "channels deprecated in
+# v4.0.1+" warning seen when running bulk_seg_v2.ipynb on the cluster).
+#
 # 1. Create the environment:
 #      conda env create -f environment.yml
 #
