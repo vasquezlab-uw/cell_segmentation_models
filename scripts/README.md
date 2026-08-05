@@ -54,6 +54,16 @@ Run cells top to bottom. The pipeline has three stages:
 2. **Bulk segmentation** — runs the trained Cellpose model on the CLAHE stacks
 3. **Post-processing** — measures cell volumes, plots the distribution, and flags small/large outliers
 
+##Parameters
+Here are some of the parameters you can change:
+
+1. flow_threshold is the maximum allowed error of the flows for each mask. The default is 0.4.
+  Increase this threshold if cellpose is not returning as many masks as you’d expect (or turn off completely with 0.0)
+  Decrease this threshold if cellpose is returning too many ill-shaped masks.
+2. cellprob_threshold determines probability that a detected object is a cell. The default is 0.0.
+  Decrease this threshold if cellpose is not returning as many masks as you’d expect or if masks are too small
+  Increase this threshold if cellpose is returning too many masks esp from dull/dim areas.
+
 ## Notes
 
 - **Cellpose version:** pinned to `4.1.1` (Cellpose-SAM) to match what's confirmed running on the lab cluster.
