@@ -34,7 +34,7 @@ See **[`scripts/README.md`](scripts/README.md)** for full setup instructions, in
 
 ## Heads up before cloning
 
-The model checkpoints in `models/` are tracked via **Git LFS** and are ~1.16GB each (~2.3GB total). Cloning this repo will download all of that. We're currently on GitHub's free LFS tier (1GB storage/bandwidth), so please be mindful of repeated large clones/pulls if usage becomes an issue for the lab.
+The model checkpoints in `models/` are tracked via **Git LFS** and are ~1.16GB each (~2.3GB total). Cloning this repo will download all of that.
 
 ## Questions
 
