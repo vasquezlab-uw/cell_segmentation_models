@@ -8,6 +8,23 @@ This folder contains the segmentation pipeline notebook (`cell_seg_pipeline_tiff
 conda env create -f environment.yml
 conda activate cell_analysis
 ```
+### Optional Napari visualization
+
+An optional Napari visualization step has been added to the end of `scripts/cell_seg_pipeline_tiff.ipynb`. This allows the user to visualize the CLAHE image and segmentation labels together in Napari with the correct voxel scaling. **This visualization only works if there is only ONE segmented tif.**
+
+To use this visualization, create the environment using:
+
+```bash
+conda env create -f scripts/environment_napari.yml
+conda activate cell_analysis
+```
+
+If you do not need the visualization, the original environment can still be created with:
+
+```bash
+conda env create -f scripts/environment.yml
+```
+The segmentation pipeline itself is unchanged; the Napari visualization is entirely optional.
 
 ## 2. GPU setup (do this after creating the environment)
 
