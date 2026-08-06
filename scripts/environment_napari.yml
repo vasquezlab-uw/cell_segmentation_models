@@ -1,0 +1,46 @@
+name: cell_analysis
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.10
+  - numpy
+  - pandas
+  - matplotlib
+  - scikit-image
+  - tqdm
+  - jupyter
+  - ipykernel
+  - pip
+  - pip:
+      - tifffile
+      - cellpose==4.1.1   # matches the version confirmed on the lab cluster (tillicum, cellpose env)
+      - napari[all]
+      - napari-orthogonal-views
+
+# --- Notes for setup ---
+#
+# CELLPOSE-SAM NOTE: cellpose 4.1.1 is a Cellpose-SAM release.
+# Cellpose-SAM disregards the `channels` parameter that was used in v3 and
+# earlier — the `channels=[0, 0]` argument in model.eval() in these notebooks
+# is a no-op under this version (confirmed by the "channels deprecated in
+# v4.0.1+" warning seen when running bulk_seg_v2.ipynb on the cluster).
+#
+# 1. Create the environment:
+#      conda env create -f environment.yml
+#
+# 2. Activate it:
+#      conda activate cell_analysis
+#
+# 3. Register it as a Jupyter kernel (so it shows up in VS Code / Jupyter Lab):
+#      python -m ipykernel install --user --name cell_analysis --display-name "cell_analysis"
+#
+# 4. GPU note: this notebook calls models.CellposeModel(gpu=True, ...).
+#    The pip-installed `cellpose` package pulls in a CPU-only PyTorch by default.
+#    For GPU support, install the matching CUDA build of torch AFTER creating
+#    this environment, e.g. (adjust cuXXX to your driver's CUDA version):
+#      pip install torch --index-url https://download.pytorch.org/whl/cu121
+#    Check available versions/instructions at https://pytorch.org/get-started/locally/
+#
+# 5. Update the paths in the notebook's "Config" cell (raw_dir, clahe_dir,
+#    mask_dir, results_dir, model_path) before running.
