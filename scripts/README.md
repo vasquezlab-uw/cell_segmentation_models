@@ -84,6 +84,22 @@ Here are some of the parameters you can change:
   Increase this threshold if cellpose is returning too many masks esp from dull/dim areas.
 
 ## Notes
+dependencies:
+  - python=3.10
+  - numpy
+  - pandas
+  - matplotlib
+  - scikit-image
+  - tqdm
+  - jupyter
+  - ipykernel
+  - pip
+  - pip:
+      - tifffile
+      - cellpose==4.1.1   # matches the version confirmed on the lab cluster (tillicum, cellpose env)
+      - napari[all]
+      - napari-orthogonal-views
+
 
 - **Cellpose version:** pinned to `4.1.1` (Cellpose-SAM) to match what's confirmed running on the lab cluster.
 - **`channels` parameter:** Cellpose-SAM disregards the `channels=[0, 0]` argument used in `model.eval()` — this is expected behavior in v4.0.1+, not a bug.
